@@ -1,13 +1,11 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const dotenv = require('dotenv')
+const dotenv = require('dotenv').config();
 const path = require('path')
 const cron = require('node-cron')
 const emailer = require('./utils/birthday-email')
 
-require('dotenv').config({
-    path: "./config.env"
-});
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 
 const taskScheduler = require("./utils/schedule")
 
@@ -18,7 +16,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"client","build")))
 
-const dbUrl = process.env.ATLAS_URI
+
 //TODO- abstract db from URI
 mongoose.connect(process.env.URI)
 
