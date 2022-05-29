@@ -1,0 +1,43 @@
+
+label{
+    margin-left: auto;
+    width: 200px;
+    font-size: 25px;
+}
+
+input{
+    width: 100px;
+    height: 30px;
+}
+
+.select{
+    width: 100px;
+    min-width: 100px;
+    margin-top: 5px;
+}
+
+#btn-adduser{
+    margin-left: 200px;
+    margin-top: 10px;
+}
+
+div.select{
+    display: inline-flex;
+    width: 200px;
+}
+label.select{
+    width: 200px;
+}
+
+.form-add{
+
+}
+.form-add-header{
+    font-size: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+ 
+}
+
+#drp-group{
+    width: 100px;
+}

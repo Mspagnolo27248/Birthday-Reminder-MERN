@@ -1,0 +1,51 @@
+
+
+create database mongodb
+documnet   =>
+    users= {Id:"01",FirstName:'Mike',LastName:'Spagnolo',Group:'friends',}
+    event = {UserId:"",EventID:"",Type:"1Birthday/2Annaversary",Desc:"Custom Desc","Date","ReminderDaysAhead:int 1}
+
+connect to db create CRUD operations for each tablen 
+User=> Insert,Update,Delete
+Events => Insert,Update,Delete,Get
+
+Create Query that will get all events for a current day. 
+
+UI:
+Home Screen 
+Search Input => When user enters text filter all users  
+Plus Sign  => when clicked take to add user form. 
+List all users => on page load create card for every User in the db
+
+Create Event Form (New User)
+    FirstName,LastName,Group,Button<Existing Friends> Birthday<Date> , Anaversery<Date>
+
+Page<Existing Users>
+    List of Users when clicked takes to create 
+
+Create Event Form (Existing User)
+     FirstName,LastName,Group,Button<Existing Friends> Birthday<Date> , Anaversery<Date>
+
+
+Utils:
+
+ScheduleTask()
+SendEmail()
+SendDailyReminders()
+sendCard()
+
+InsertUser()
+InserEvent()
+
+UpdateUser()
+UpdateEvent()
+
+GetUsers()
+GetEvents()
+GetEventsByUser()
+
+DeleteUser()
+DeleteEvent()
+
+
+
