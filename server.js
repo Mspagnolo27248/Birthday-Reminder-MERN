@@ -15,10 +15,10 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname,"client","build")))
-
-
+const pw = process.env.PASSWORD
+const dbUrl = "mongodb+srv://mspagnolo-admin:"+pw+"@cluster0.lxizv.mongodb.net/BirthdayApp?retryWrites=true&w=majority"
 //TODO- abstract db from URI
-mongoose.connect(process.env.URI)
+mongoose.connect(dbUrl)
 
 //Models
 const userSchema = {
