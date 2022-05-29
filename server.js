@@ -124,19 +124,11 @@ app.get("/Bdays", (req, res) => {
     })
 })
 
-// const todayString = new Date().toISOString().slice(0, 10);
-// const query = async ()=>{
-// let user = ()=> (User.find({birthday: todayString}).exec())
-// return await user();
-// };
-//date,task,
 
 
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
-// });
-
-
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+});
 
 app.listen(port, () => {
 
