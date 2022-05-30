@@ -19,6 +19,8 @@ const pw = process.env.PASSWORD
 const dbUrl = "mongodb+srv://mspagnolo-admin:"+pw+"@cluster0.lxizv.mongodb.net/BirthdayApp?retryWrites=true&w=majority"
 //TODO- abstract db from URI
 mongoose.connect(dbUrl)
+.then(() => console.log("Database Connected Successfully"))
+.catch(err => console.log(err));
 
 //Models
 const userSchema = {
