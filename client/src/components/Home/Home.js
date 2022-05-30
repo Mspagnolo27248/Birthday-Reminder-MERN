@@ -17,7 +17,11 @@ function Home(){
 
 
     useEffect(()=>{
-        fetch(`http://localhost:${port}/User`,)
+        fetch("/User",{
+            headers:{
+                "accepts":"application/json"
+            }
+        })
         .then(response => response.json())
         .then(data =>{ 
             
@@ -25,7 +29,7 @@ function Home(){
             console.log("Home Effect Ran")});
     },[])
 
-    
+   
     useEffect(()=>{
         const newFilteredPeople = people.filter((item) =>
       ((item.firstname+' '+item.lastname).toLowerCase().includes(searchInput.toLocaleLowerCase())))        
