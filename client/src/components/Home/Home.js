@@ -4,6 +4,7 @@ import {people as data}   from '../../utils/data'
 import {useState,useEffect} from  'react'
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+const port = process.env.PORT || 5000;
 
 function Home(){
     const history = useHistory();
@@ -16,7 +17,7 @@ function Home(){
 
 
     useEffect(()=>{
-        fetch("http://localhost:5000/User",)
+        fetch(`http://localhost:${port}/User`,)
         .then(response => response.json())
         .then(data =>{ 
             
