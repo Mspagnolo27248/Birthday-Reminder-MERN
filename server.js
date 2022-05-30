@@ -14,7 +14,7 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname,"client","build")))
+app.use(express.static(path.join(__dirname,"client")))
 const pw = process.env.PASSWORD
 const dbUrl = "mongodb+srv://mspagnolo-admin:"+pw+"@cluster0.lxizv.mongodb.net/BirthdayApp?retryWrites=true&w=majority"
 //TODO- abstract db from URI
