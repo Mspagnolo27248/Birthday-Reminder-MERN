@@ -14,7 +14,7 @@ const app = express();
 const cors = require('cors');
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname,"client")))
+app.use(express.static(path.resolve(__dirname, "./client/build")));
 const pw = process.env.PASSWORD
 const dbUrl = "mongodb+srv://mspagnolo-admin:"+pw+"@cluster0.lxizv.mongodb.net/BirthdayApp?retryWrites=true&w=majority"
 //TODO- abstract db from URI
@@ -125,7 +125,7 @@ app.get("/Bdays", (req, res) => {
 
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client", "public","index.html"));
+    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
 });
 
 app.listen(port, () => {
