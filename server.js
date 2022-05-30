@@ -157,6 +157,7 @@ app.listen(port, () => {
     })
 
     console.log(`App Listening on ${port}`)
+    console.log(dbUrl)
 
 
 
