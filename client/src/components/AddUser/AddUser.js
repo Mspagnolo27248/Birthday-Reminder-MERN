@@ -18,7 +18,7 @@ const handleSubmit = (event) => {
     
     event.preventDefault();
     async function addUser() {
-    await fetch("http://localhost:5000/User",{
+    await fetch("/User",{
         method: 'post',
         headers: {'Content-Type':'application/json'},
         body: 

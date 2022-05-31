@@ -17,18 +17,6 @@ const [newUser,setNewUser] = useState({
     mongoId: location.state.mongoId
 });
 
-// useEffect(() => {
-//     setNewUser['firstname']=location.state.firstname; 
-//     setNewUser['lastname']=location.state.lastname; 
-//     setNewUser['birthday']=location.state.birthday;
-//     setNewUser['group']=location.state.group;
-//     setNewUser['reminder']=location.state.reminder;
-//     setNewUser['mongoId']=location.state.mongoId;// result: '/secondpage'
-//     // result: '/secondpage'
-//     debugger
-//     console.log(location.mongoId); // result: '?query=abc'
- 
-//  }, [location]);
 
 
 
@@ -37,7 +25,7 @@ const handleSubmit = (event) => {
     event.preventDefault();
     async function editUser(){
     const res = await
-    fetch("http://localhost:5000/User",{
+    fetch("/User",{
         method: 'put',
         headers: {'Content-Type':'application/json'},
         body: 
