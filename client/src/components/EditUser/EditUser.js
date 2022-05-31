@@ -47,7 +47,7 @@ const handleDelete = (event)=>{
 
     async function delUser(){
     const res = await
-    fetch("http://localhost:5000/User",{
+    fetch("/User",{
         method: 'delete',
         headers: {'Content-Type':'application/json'},
         body: 
