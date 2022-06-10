@@ -132,23 +132,9 @@ app.get("*", (req, res) => {
 
 app.listen(port, () => {
 
-    let convertDate = (yyyyMMdd) => {
-        const splitDate = yyyyMMdd.split('-')
-        return new Date(splitDate[0], splitDate[1]-1, splitDate[2])
-    }
-   
+  
         
-    const request = require('request');
-
-    request.post(process.env.TRUSTIFI_URL + '/api/i/v1/email', {
-   headers: {
-    'x-trustifi-key': process.env.TRUSTIFI_KEY,
-    'x-trustifi-secret': process.env.TRUSTIFI_SECRET
-  },
-  json:{"recipients":[{"email":"mspagnolo27@gmail.com"}],"title":"Title","html":"Body"}
-}, (err, res, body) => {
-   console.log(body);
-});
+  
 
     console.log(`App Listening on ${port}`)
     console.log(dbUrl)
