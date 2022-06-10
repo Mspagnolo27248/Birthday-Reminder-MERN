@@ -136,27 +136,19 @@ app.listen(port, () => {
         const splitDate = yyyyMMdd.split('-')
         return new Date(splitDate[0], splitDate[1]-1, splitDate[2])
     }
-    cron.schedule('30 6 * * *', () => {
-        console.log('Task Ran')
-        const currentMonth = new Date().getMonth()
-        const currentDay = new Date().getDate()
+   
+        
+    const request = require('request');
 
-        User.find().lean().exec({}, function (err, results) {
-            if (err) {
-                console.log(err)
-            } else {
-                const todaysBirthdays = results.filter((a) => (convertDate(a.birthday).getMonth() == currentMonth &&
-                     convertDate(a.birthday).getDate() == currentDay))
-
-                const monthBirthdays = results.filter((a) => (new Date(a.birthday).getMonth() == currentMonth))
-
-
-
-                emailer.dailyEmail(todaysBirthdays);
-                emailer.monthlyEmail(monthBirthdays);
-            }
-        })
-    })
+    request.post(process.env.TRUSTIFI_URL + '/api/i/v1/email', {
+   headers: {
+    'x-trustifi-key': process.env.TRUSTIFI_KEY,
+    'x-trustifi-secret': process.env.TRUSTIFI_SECRET
+  },
+  json:{"recipients":[{"email":"mspagnolo27@gmail.com"}],"title":"Title","html":"Body"}
+}, (err, res, body) => {
+   console.log(body);
+});
 
     console.log(`App Listening on ${port}`)
     console.log(dbUrl)
