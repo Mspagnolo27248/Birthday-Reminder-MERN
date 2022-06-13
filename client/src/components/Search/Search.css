@@ -1,0 +1,45 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.title{
+    text-align: center;
+    margin-bottom: 25px;
+
+}
+
+.search-main{
+    width: 20%;
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.btn-search{
+    text-align: center;
+    margin-bottom: 10px;
+    
+
+}
+
+.header-margin{
+    margin-bottom: 50px;
+}
+
+.card-list {
+
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 20px;
+  }
+
+/* On screens that are 992px or less, set the background color to blue */
+@media screen and (max-width: 992px) {
+    .search-main{
+        width: 60%;
+        margin: auto;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+  }
