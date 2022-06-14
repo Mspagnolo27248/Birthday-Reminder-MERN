@@ -109,7 +109,9 @@ function Search(){
              <input type="hidden" id="group" name="group" value={person.group}/>
              <input type="hidden" id="reminder" name="reminder" value={person.reminder}/>
              <input type="hidden" id="birthday" name="birthday" value={person.birthday}/>              */}
-             <button type={"submit"} className={"btn btn-primary "} value={person._id} onClick={handleEdit} ></button>
+             <button type={"submit"} className={"btn btn-primary "} value={person._id} onClick={handleEdit} >
+            
+             </button>
              </form>
            
              

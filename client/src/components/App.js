@@ -18,8 +18,9 @@ function App(){
             </Route>
             <Route exact path ="/AddUser">
                 <AddUser/>
-            </Route> <Route exact path ="/AddUser">
-                <AddUser/>
+            </Route>
+             <Route exact path ="/EditUser">
+                <EditUser/>
             </Route>
             <Route exact path ="/Search">
                 <Search/>
