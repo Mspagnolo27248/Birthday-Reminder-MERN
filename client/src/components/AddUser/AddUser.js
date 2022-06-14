@@ -1,4 +1,6 @@
 import {useState} from 'react'
+import Helmet from "react-helmet";
+import { Navigation } from "../Navigation/Navigation"
 import { useHistory } from "react-router-dom";
 import './AddUser.css'
 
@@ -46,6 +48,11 @@ setNewUser(currentUser)
 
   return (
     <div>
+       <Helmet>
+          <title>Birthday Reminder</title>
+        </Helmet>   
+     
+        <Navigation/>
     <div className='form-add'>
 
     

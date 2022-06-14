@@ -1,119 +1,126 @@
 import React from "react"
 import './Home.css'
+import Helmet from "react-helmet";
+import { Navigation } from "../Navigation/Navigation"
+
 import {people as data}   from '../../utils/data'
 import {useState,useEffect} from  'react'
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-const port = process.env.PORT || 5000;
+
+const monthNames = [
+"January",
+"February",
+"March",
+"April",
+"May",
+"June",
+"July",
+"August",
+"September",
+"October",
+"November",
+"December"]
 
 function Home(){
     const history = useHistory();
     const location = useLocation();
 
 
-    const [searchInput,setSearchInput] = useState('')
     const [people,setPeople] = useState(data)
-    const [filteredPeople,setFilteredPeople] = useState(people)
+    const [monthDict,setMonthDict] = useState({})
 
 
-    useEffect(()=>{
-        fetch("/User",{
-            headers:{
-                "accepts":"application/json"
-            }
-        })
-        .then(response => response.json())
-        .then(data =>{ 
-            
-            setPeople(data)
-            console.log("Home Effect Ran")});
+useEffect(()=>{
+    fetch("http://localhost:5000/User",{
+    headers:{
+        "accepts":"application/json"
+    }
+    })
+    .then(response => response.json())
+    .then(data =>{ 
+        
+    setPeople(data)
+     const mydict = {}
+    //Create people dict
+    data.map((item)=>{
+        const itemDate = new Date(item.birthday)
+        const itemMonth = itemDate.getMonth();
+        if(mydict.hasOwnProperty(itemMonth)){
+            mydict[itemMonth].push(item)
+        }else{
+            mydict[itemMonth] = [item]
+        }
+       
+    })
+    setMonthDict(mydict)
+    console.log(mydict)
+    console.log("Home Effect Ran")});
     },[])
 
    
-    useEffect(()=>{
-        const newFilteredPeople = people.filter((item) =>
-      ((item.firstname+' '+item.lastname).toLowerCase().includes(searchInput.toLocaleLowerCase())))        
-        setFilteredPeople(newFilteredPeople)       
-    },[people,searchInput])
+    // const nth = function(d) {
+    //     if (d > 3 && d < 21) return 'th';
+    //     switch (d % 10) {
+    //       case 1:  return "st";
+    //       case 2:  return "nd";
+    //       case 3:  return "rd";
+    //       default: return "th";
+    //     }
+    //   }
+      
+
+ 
 
 
-    const handleSearchChange = (e)=>{     
-        setSearchInput(e.target.value)       
-    }
 
-
-    const handleClick = (event) => {
-        event.preventDefault();   
-        
-        //after submit form redirect user
-        history.push('/AddUser');
-        
-      };
-
-
-    const handleEdit = (event) => {
-        event.preventDefault(); 
-          
-        const person  = people.filter((e)=>(e._id === event.target.value))[0]
-        //after submit form redirect user
-        debugger
-        history.push({pathname: '/EditUser',
        
-        state: {
-            mongoId:person._id,
-            firstname:person.firstname||'',
-            lastname:person.lastname||'',
-            birthday:person.birthday||'',
-            group:person.group||'',
-            reminder:person.reminder||''
-        }});
-        
-      };
+      
     return (
         <div>
+            <Helmet>
+          <title>Birthday Reminder</title>
+        </Helmet>   
+     
+        <Navigation/>
+
+     
+
         <div className="header-margin"></div>
-        <div className="title"><h1>Birthday App</h1></div>
-    <div>
-    <input 
-    className={"form-control form-control-lg search-main"} 
-    type={"search"} 
-    placeholder={"Search"}
-    value={searchInput}
-    onChange={handleSearchChange}>
-    
-    </input>
-    </div>
-    
-    <div className={"btn-search"}>
-    <button type={"button"} className={"btn btn-secondary btn-add"} onClick={handleClick} >Add</button>
-    </div>
-
-    
+       
+        
+  <div className="list-home">
 
  
-    <div className="card-list">
- 
-        {  filteredPeople.map((person)=> (
-            <div className="card-container"> <h2 className="card-name">{(person.firstname+' '+person.lastname)}</h2>
-             <h2 className="card-birthday"> Birthday: {person.birthday}</h2>
-             <h2 className="card-group">{person.group}</h2>
-             {/* Inputs */}
-             <form>
-             {/* <input type="hidden" id="mongoId" name="mongoId" value={person.id}/>
-             <input type="hidden" id="firstname" name="firstname" value={person.firstname}/>
-             <input type="hidden" id="lastname" name="lastname" value={person.lastname}/>
-             <input type="hidden" id="group" name="group" value={person.group}/>
-             <input type="hidden" id="reminder" name="reminder" value={person.reminder}/>
-             <input type="hidden" id="birthday" name="birthday" value={person.birthday}/>              */}
-             <button type={"submit"} className={"btn btn-primary "} value={person._id} onClick={handleEdit} ></button>
-             </form>
+       {
+        Object.keys(monthDict).map((key)=>{
+            
+            return (
+                   <div> 
+                   <h1>{monthNames[key]}</h1>
+                   { console.log(key)}
+                   {console.log(monthDict[key])}
+                   {
+                     
+                       monthDict[key]
+                       .sort((a,b) => (a.birthday.slice(-2) > b.birthday.slice(-2)) ? 1 : ((b.birthday.slice(-2) > a.birthday.slice(-2)) ? -1 : 0))
+                       .map((item)=>{return (<h2>{item.firstname+' '+item.lastname+' '+item.birthday.slice(-2)}</h2>)})
+                   }
+
+                   </div>
+                   )
+                   })
+       }
+       </div>
+          
+
+
+     
            
              
-             </div>))}
     </div>
-        </div>
-    )
-}
+    )}
+
 
 
 export default Home;

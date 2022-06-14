@@ -1,4 +1,6 @@
 import React from "react"
+import Helmet from "react-helmet";
+import { Navigation } from "../Navigation/Navigation"
 import './Search.css'
 import {people as data}   from '../../utils/data'
 import {useState,useEffect} from  'react'
@@ -71,8 +73,10 @@ function Search(){
       };
     return (
         <div>
+             <Helmet>  <title>Birthday Reminder</title></Helmet>       
+        <Navigation/>
         <div className="header-margin"></div>
-        <div className="title"><h1>Birthday App</h1></div>
+        <div className="title"><h1>Birthday's</h1></div>
     <div>
     <input 
     className={"form-control form-control-lg search-main"} 
