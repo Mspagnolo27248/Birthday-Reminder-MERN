@@ -1,0 +1,12 @@
+Understand how to setup dev vs prod 
+"proxy" so you dont have to change fetch
+
+
+git
+merge, single filter
+remove node mods
+
+
+react
+update opbject hook spread operator.
+
