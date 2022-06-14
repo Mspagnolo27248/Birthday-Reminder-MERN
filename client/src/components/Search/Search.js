@@ -1,6 +1,6 @@
 import React from "react"
 import Helmet from "react-helmet";
-import { Navigation } from "../Nav/Nav"
+import { Navigation } from "../a/Nav"
 
 import './Search.css'
 import {people as data}   from '../../utils/data'
@@ -9,7 +9,7 @@ import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 
-function Search(){cd
+function Search(){
     const history = useHistory();
     const location = useLocation();
 
