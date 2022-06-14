@@ -32,7 +32,7 @@ function Home(){
 
 
 useEffect(()=>{
-    fetch("http://localhost:5000/User",{
+    fetch("/User",{
     headers:{
         "accepts":"application/json"
     }
