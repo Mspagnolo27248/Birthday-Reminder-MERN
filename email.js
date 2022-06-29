@@ -29,7 +29,7 @@ let convertDate = (yyyyMMdd) => {
 
 const currentMonth = new Date().getMonth()
 const currentDay = new Date().getDate()
- if (currentDay===11){
+ if (currentDay===1){
   User.find().lean().exec({}, function (err, results) {
     if (err) {
         console.log(err)
